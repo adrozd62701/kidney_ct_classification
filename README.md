@@ -1,2 +1,7 @@
-# kidney_ct_classification
-Classifying Kidney Stones, Tumors, Cysts, and Normal Kidneys with Computer Vision
+# Kidney CT Classification
+In this project, our goal was to build a classifier that would determine the affliction on the kidney from CT scan images. Our data was unique in that it contained two views and multiple images per patient, so we developed classifiers for both image types and created a custom train-test split. We designed simple features such as Histogram of Intensities, Fourier Transform, GLCM, and HOG, as well as complex features like ResNet50 outputs and segmentation masks. For segmentation, we implemented a three-stage process: (1) training a custom U-Net model to generate kidney masks, (2) fine-tuning the U-Net model to create high-confidence pseudo-labels for our dataset using iterative training and feedback loops, and (3) leveraging these generated masks to support a CNN for feature extraction and classification. We performed PCA reduction to compare two different feature vectors per image type per classifier and ran experiments across these sets. Hyperparameter searches were conducted to optimize results. The Coronal model with the best performance was an XGBoost classifier on the entire feature dataset, with a test accuracy of 67.87\%. The Axial model with best performance was an XGBoost classifier on the PCA-applied feature dataset, with a test accuracy of 73.07\%. When comparing accuracy and efficiency, we found that most of our models were highly efficient, with improvements over our baseline in almost all cases. 
+
+## Links:
+
+* [Code](code/)
+* [Paper](paper/)
